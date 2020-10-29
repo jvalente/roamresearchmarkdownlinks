@@ -2,10 +2,19 @@ module.exports = function(grunt) {
     grunt.initConfig({
         eslint: {
             target: ['*.js', 'app/*.js']
+        },
+        compress: {
+            dist: {
+                options: {
+                    archive: 'dist/roamresearchmdlinks.zip'
+                },
+                files:[{expand: true, cwd: 'app/', src: ['**']}]
+            }
         }
     })
 
     grunt.loadNpmTasks('grunt-eslint')
+    grunt.loadNpmTasks('grunt-contrib-compress')
 
     grunt.registerTask('version', (key, value) => {
         const filenames = ['package.json', 'app/manifest.json']
@@ -29,9 +38,6 @@ module.exports = function(grunt) {
         }
     })
 
-    grunt.registerTask('build', (key, value) => {
-        console.log('building')
-    })
-
-    grunt.registerTask('release', ['eslint', 'version', 'build'])
+    grunt.registerTask('build', ['eslint', 'compress'])
+    grunt.registerTask('release', ['eslint', 'version', 'compress'])
 }
