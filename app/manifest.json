@@ -1,0 +1,31 @@
+{
+    "name": "Roam Research Markdown Links",
+    "version": "1.4.0",
+    "description": "Automatically pastes links on Roam Research as Markdown and set the link text as the linked page title",
+    "icons": {
+        "16": "rrsmartlink16.png",
+        "48": "rrsmartlink48.png",
+        "128": "rrsmartlink128.png"
+    },
+    "permissions": [
+        "tabs"
+    ],
+    "background": {
+        "scripts": [
+            "background.js"
+        ],
+        "persistent": false
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://roamresearch.com/*"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "run_at": "document_end"
+        }
+    ],
+    "manifest_version": 2
+}

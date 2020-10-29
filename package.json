@@ -1,0 +1,16 @@
+{
+    "name": "roamresearchmarkdownlinks",
+    "version": "1.4.0",
+    "description": "Automatically pastes links on Roam Research as Markdown and set the link text as the linked page title.",
+    "scripts": {
+        "lint": "grunt eslint",
+        "buid": "grunt build",
+        "release": "grunt release"
+    },
+    "author": "João Valente",
+    "license": "MIT",
+    "devDependencies": {
+        "grunt": "^1.3.0",
+        "grunt-eslint": "^23.0.0"
+    }
+}
