@@ -3,6 +3,7 @@
     "version": "1.4.0",
     "description": "Automatically pastes links on Roam Research as Markdown and set the link text as the linked page title.",
     "scripts": {
+        "lint": "grunt eslint",
         "build": "grunt build",
         "release": "grunt release"
     },

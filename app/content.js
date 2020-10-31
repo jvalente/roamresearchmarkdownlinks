@@ -3,9 +3,8 @@ document.addEventListener('paste', (event) => {
 
     let text = (event.clipboardData || window.clipboardData).getData('text')
 
-    if (validURL(text))
-    {
-        event.preventDefault();
+    if (validURL(text)) {
+        event.preventDefault()
         chrome.runtime.sendMessage({url: text}, (response) => {
             if (response.length > 0) {
                 text = `[${response[0].title}](${text}${text.endsWith('/') ? ') ' : ')'}`
@@ -32,7 +31,7 @@ function insertText(element, text) {
     const previous_text = element.value
     const before = previous_text.substring(0, start)
     const after  = previous_text.substring(end, previous_text.length)
-    const event = new Event('input', { bubbles: true })
+    const event = new Event('input', {bubbles: true})
 
     element.value = before + text + after
     element.selectionStart = element.selectionEnd = start + text.length
