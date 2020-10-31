@@ -3,9 +3,9 @@
     "version": "1.4.0",
     "description": "Automatically pastes links on Roam Research as Markdown and set the link text as the linked page title",
     "icons": {
-        "16": "assets/icon16.png",
-        "48": "assets/icon48.png",
-        "128": "assets/icon128.png"
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
     },
     "permissions": [
         "tabs"
