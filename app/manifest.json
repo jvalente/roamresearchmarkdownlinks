@@ -7,6 +7,21 @@
         "48": "icons/icon48.png",
         "128": "icons/icon128.png"
     },
+    "browser_action": {
+        "default_icon": {
+            "16": "icons/icon16.png",
+            "32": "icons/icon32.png"
+        }
+        // "theme_icons": [{
+        //   "light": "icons/geo-16-light.png",
+        //   "dark": "icons/geo-16.png",
+        //   "size": 16
+        // }, {
+        //   "light": "icons/geo-32-light.png",
+        //   "dark": "icons/geo-32.png",
+        //   "size": 32
+        // }]
+    },
     "permissions": [
         "tabs"
     ],
