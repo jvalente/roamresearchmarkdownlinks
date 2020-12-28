@@ -17,6 +17,12 @@ document.addEventListener('paste', (event) => {
 
 function validURL(str) {
     try {
+        // Chrome considers standalone hashtags to be valid URL objects.
+        // However, we don't want to query tabs with this (hashtags not
+        // being a valid URL for querying tabs).
+        if (str.startsWith('#'))
+            return false
+
         new URL(str)
     } catch (_) {
         return false
