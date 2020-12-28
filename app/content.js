@@ -3,9 +3,9 @@ document.addEventListener('paste', (event) => {
 
     let text = (event.clipboardData || window.clipboardData).getData('text')
 
-    if (validURL(text)) {
+    if (validURL(text.trim())) {
         event.preventDefault()
-        chrome.runtime.sendMessage({url: text}, (response) => {
+        chrome.runtime.sendMessage({url: text.trim()}, (response) => {
             if (response.length > 0) {
                 text = `[${response[0].title}](${text}${text.endsWith('/') ? ') ' : ')'}`
             }
