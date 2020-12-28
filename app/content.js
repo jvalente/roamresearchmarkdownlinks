@@ -3,9 +3,9 @@ document.addEventListener('paste', (event) => {
 
     let text = (event.clipboardData || window.clipboardData).getData('text')
 
-    if (validURL(text) && !inMarkdownLink(element)) {
+    if (validURL(text.trim()) && !inMarkdownLink(element)) {
         event.preventDefault()
-        chrome.runtime.sendMessage({url: text}, (response) => {
+        chrome.runtime.sendMessage({url: text.trim()}, (response) => {
             if (response.length > 0) {
                 text = `[${response[0].title}](${text}${text.endsWith('/') ? ') ' : ')'}`
             }
@@ -17,6 +17,12 @@ document.addEventListener('paste', (event) => {
 
 function validURL(str) {
     try {
+        // Chrome considers standalone hashtags to be valid URL objects.
+        // However, we don't want to query tabs with this (hashtags not
+        // being a valid URL for querying tabs).
+        if (str.startsWith('#'))
+            return false
+
         new URL(str)
     } catch (_) {
         return false
