@@ -3,7 +3,7 @@ document.addEventListener('paste', (event) => {
 
     let text = (event.clipboardData || window.clipboardData).getData('text')
 
-    if (validURL(text.trim())) {
+    if (validURL(text.trim()) && !inMarkdownLink(element)) {
         event.preventDefault()
         chrome.runtime.sendMessage({url: text.trim()}, (response) => {
             if (response.length > 0) {
@@ -29,6 +29,13 @@ function validURL(str) {
     }
 
     return true
+}
+
+function inMarkdownLink(element) {
+    const before_cursor = element.value.substring(0, element.selectionStart)
+    const lastOpen = before_cursor.lastIndexOf('](')
+    const lastClose = before_cursor.lastIndexOf(')')
+    return lastOpen !== -1 && lastClose < lastOpen
 }
 
 function insertText(element, text) {
